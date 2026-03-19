@@ -54,12 +54,19 @@ await ConnectDB();
 
 // Start the server
 
-if(process.env.NODE_ENV === "production"){
-  const port = process.env.PORT || 5000;
-  server.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
-}
+// if(process.env.NODE_ENV === "production"){
+//   const port = process.env.PORT || 5000;
+//   server.listen(port, () => {
+//     console.log(`Server is running on port ${port}`);
+//   });
+// }
+await ConnectDB();
+
+const port = process.env.PORT || 5000;
+server.listen(port, () => {
+  console.log(`Server is running on port ${port} in ${process.env.NODE_ENV || 'development'} mode`);
+});
+
 
 
 // Export the server for Vercel
